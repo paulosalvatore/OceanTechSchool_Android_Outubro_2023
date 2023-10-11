@@ -14,7 +14,7 @@ data class ListPokemonApiResult(
     val count: Int,
     val next: String?,
     val previous: String?,
-    val results: Array<ListPokemonResult>
+    val results: List<ListPokemonResult>
 )
 
 interface PokeApiService {
