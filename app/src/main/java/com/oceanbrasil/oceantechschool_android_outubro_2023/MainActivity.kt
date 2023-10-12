@@ -2,6 +2,7 @@ package com.oceanbrasil.oceantechschool_android_outubro_2023
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,6 +54,16 @@ class MainActivity : AppCompatActivity() {
             ) {
                 // Caso a requisição HTTP tenha sido bem sucedida
                 Log.d("POKEMON_API", response.body().toString())
+
+                val tvName = findViewById<TextView>(R.id.tvName)
+
+                response.body()?.let {
+                    tvName.text = ""
+
+                    it.results.forEach { pokemon ->
+                        tvName.append(pokemon.name + "\n")
+                    }
+                }
             }
 
             override fun onFailure(call: Call<ListPokemonApiResult>, t: Throwable) {
