@@ -10,5 +10,5 @@
         android:id="@+id/rvPokemon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/pokemon_item"/>
+        tools:listitem="@layout/pokemon_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
