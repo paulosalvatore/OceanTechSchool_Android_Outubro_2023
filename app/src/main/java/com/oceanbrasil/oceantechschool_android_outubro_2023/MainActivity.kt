@@ -2,8 +2,10 @@ package com.oceanbrasil.oceantechschool_android_outubro_2023
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,6 +39,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val ivImage = findViewById<ImageView>(R.id.ivImage)
+        Glide
+            .with(ivImage)
+            .load("https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png")
+            .into(ivImage)
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/")
