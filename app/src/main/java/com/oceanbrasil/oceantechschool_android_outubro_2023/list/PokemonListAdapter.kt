@@ -42,7 +42,9 @@ class PokemonListAdapter(private val dataSet: Array<PokemonItem>) :
         // contents of the view with that element
         val pokemonItem = dataSet[position]
 
-        viewHolder.tvName.text = pokemonItem.name
+        viewHolder.tvName.text = pokemonItem.name.replaceFirstChar {
+            it.uppercase()
+        }
 
         Glide.with(viewHolder.ivImage)
             .load(pokemonItem.imageUrl)
