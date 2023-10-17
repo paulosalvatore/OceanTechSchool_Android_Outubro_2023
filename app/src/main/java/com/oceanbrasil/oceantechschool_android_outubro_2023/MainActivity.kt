@@ -71,9 +71,18 @@ class MainActivity : AppCompatActivity() {
                     // TODO: Transformar lista de resultados da API em lista de itens do Adapter
                     // TODO: Carregar o RecyclerView com os itens do Adapter
 
-                    val pokemon1 = PokemonItem("Nome 001", "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png")
-                    val pokemon2 = PokemonItem("Nome 002", "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/002.png")
-                    val pokemonItems = arrayOf(pokemon1, pokemon2)
+//                    val pokemon1 = PokemonItem("Nome 001", "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png")
+//                    val pokemon2 = PokemonItem("Nome 002", "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/002.png")
+//                    val pokemonItems = arrayOf(pokemon1, pokemon2)
+
+                    val pokemonItems = it.results.mapIndexed { index, result ->
+                        val number = (index + 1).toString().padStart(3, '0')
+
+                        PokemonItem(
+                            result.name,
+                            "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/$number.png"
+                        )
+                    }.toTypedArray()
 
                     val rvPokemon = findViewById<RecyclerView>(R.id.rvPokemon)
                     rvPokemon.layoutManager = LinearLayoutManager(this@MainActivity)
