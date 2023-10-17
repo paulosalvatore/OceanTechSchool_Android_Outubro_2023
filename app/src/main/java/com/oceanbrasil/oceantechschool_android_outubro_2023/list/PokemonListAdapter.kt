@@ -1,4 +1,4 @@
-package com.oceanbrasil.oceantechschool_android_outubro_2023
+package com.oceanbrasil.oceantechschool_android_outubro_2023.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-
-data class PokemonItem(
-    val name: String,
-    val imageUrl: String
-)
+import com.oceanbrasil.oceantechschool_android_outubro_2023.R
 
 class PokemonListAdapter(private val dataSet: Array<PokemonItem>) :
     RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
