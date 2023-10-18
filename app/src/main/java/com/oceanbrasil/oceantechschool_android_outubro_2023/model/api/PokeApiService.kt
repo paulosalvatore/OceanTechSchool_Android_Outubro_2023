@@ -1,4 +1,4 @@
-package com.oceanbrasil.oceantechschool_android_outubro_2023.api
+package com.oceanbrasil.oceantechschool_android_outubro_2023.model.api
 
 import retrofit2.Call
 import retrofit2.http.GET

@@ -1,4 +1,4 @@
-package com.oceanbrasil.oceantechschool_android_outubro_2023.list
+package com.oceanbrasil.oceantechschool_android_outubro_2023.view.list
 
 import android.view.LayoutInflater
 import android.view.View
