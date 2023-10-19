@@ -2,6 +2,7 @@ package com.oceanbrasil.oceantechschool_android_outubro_2023.model
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.oceanbrasil.oceantechschool_android_outubro_2023.model.api.GetPokemonApiResult
 import com.oceanbrasil.oceantechschool_android_outubro_2023.model.api.ListPokemonApiResult
 import com.oceanbrasil.oceantechschool_android_outubro_2023.model.api.PokeApiService
 import com.oceanbrasil.oceantechschool_android_outubro_2023.view.list.PokemonItem
@@ -22,9 +23,8 @@ object PokemonRepository {
 
         val service = retrofit.create(PokeApiService::class.java)
 
-        val call = service.listPokemon()
-
-        call.enqueue(object : Callback<ListPokemonApiResult> {
+        val listPokemonCall = service.listPokemon()
+        listPokemonCall.enqueue(object : Callback<ListPokemonApiResult> {
             override fun onResponse(
                 call: Call<ListPokemonApiResult>,
                 response: Response<ListPokemonApiResult>
@@ -47,6 +47,20 @@ object PokemonRepository {
 
             override fun onFailure(call: Call<ListPokemonApiResult>, t: Throwable) {
                 // Caso a requisição HTTP tenha falhado
+                Log.e("POKEMON_API", "Erro ao carregar API.", t)
+            }
+        })
+
+        val getPokemonCall = service.getPokemonByNumber(1)
+        getPokemonCall.enqueue(object: Callback<GetPokemonApiResult> {
+            override fun onResponse(
+                call: Call<GetPokemonApiResult>,
+                response: Response<GetPokemonApiResult>
+            ) {
+                Log.d("POKEMON_API", response.body().toString())
+            }
+
+            override fun onFailure(call: Call<GetPokemonApiResult>, t: Throwable) {
                 Log.e("POKEMON_API", "Erro ao carregar API.", t)
             }
         })
