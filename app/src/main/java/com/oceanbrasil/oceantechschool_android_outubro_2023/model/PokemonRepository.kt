@@ -35,12 +35,11 @@ object PokemonRepository {
                 response.body()?.let {
                     this@PokemonRepository.pokemonItems.postValue(
                         it.results.mapIndexed { index, result ->
-                            val number = (index + 1).toString().padStart(3, '0')
+                            val number = index + 1
+                            val numberFormatted = (index + 1).toString().padStart(3, '0')
+                            val imageUrl = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/$numberFormatted.png"
 
-                            PokemonItem(
-                                result.name,
-                                "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/$number.png"
-                            )
+                            PokemonItem(number, result.name, imageUrl)
                         }
                     )
                 }

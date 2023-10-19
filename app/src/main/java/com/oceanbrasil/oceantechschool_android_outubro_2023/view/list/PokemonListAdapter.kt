@@ -1,13 +1,16 @@
 package com.oceanbrasil.oceantechschool_android_outubro_2023.view.list
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.oceanbrasil.oceantechschool_android_outubro_2023.R
+import com.oceanbrasil.oceantechschool_android_outubro_2023.view.PokemonViewActivity
 
 class PokemonListAdapter(private val dataSet: Array<PokemonItem>) :
     RecyclerView.Adapter<PokemonListAdapter.ViewHolder>() {
@@ -49,6 +52,14 @@ class PokemonListAdapter(private val dataSet: Array<PokemonItem>) :
         Glide.with(viewHolder.ivImage)
             .load(pokemonItem.imageUrl)
             .into(viewHolder.ivImage)
+
+        viewHolder.itemView.setOnClickListener {
+            val pokemonViewIntent = Intent(viewHolder.itemView.context, PokemonViewActivity::class.java)
+
+            pokemonViewIntent.putExtra("POKEMON_NUMBER", pokemonItem.number)
+
+            viewHolder.itemView.context.startActivity(pokemonViewIntent)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
