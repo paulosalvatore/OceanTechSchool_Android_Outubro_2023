@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.oceanbrasil.oceantechschool_android_outubro_2023.R
+import com.oceanbrasil.oceantechschool_android_outubro_2023.model.domain.PokemonItem
 import com.oceanbrasil.oceantechschool_android_outubro_2023.view.PokemonViewActivity
 
 class PokemonListAdapter(private val dataSet: Array<PokemonItem>) :
